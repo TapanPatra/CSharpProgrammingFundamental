@@ -16,4 +16,12 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fundamentals\HelloWorld\" />
+    <Folder Include="Fundamentals\ClassesAndInheritance\" />
+    <Folder Include="Fundamentals\ClassesTheBasics\" />
+    <Folder Include="Fundamentals\Delegates\" />
+    <Folder Include="Fundamentals\Dynamic\" />
+  </ItemGroup>
+
 </Project>
