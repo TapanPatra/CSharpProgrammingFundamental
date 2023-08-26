@@ -22,6 +22,28 @@
     <Folder Include="Fundamentals\ClassesTheBasics\" />
     <Folder Include="Fundamentals\Delegates\" />
     <Folder Include="Fundamentals\Dynamic\" />
+    <Folder Include="Fundamentals\Events\" />
+    <Folder Include="Fundamentals\Generics\" />
+    <Folder Include="Fundamentals\Interfaces\" />
+    <Folder Include="Fundamentals\Lambda\" />
+    <Folder Include="Fundamentals\Async\" />
+    <Folder Include="Fundamentals\CollectionsAndArrays\" />
+    <Folder Include="Fundamentals\ControlFlowAndExpression\" />
+    <Folder Include="Fundamentals\Conversions\" />
+    <Folder Include="Fundamentals\CovarianceAndContravariance\" />
+    <Folder Include="Fundamentals\EnumeratorsAndIterators\" />
+    <Folder Include="Fundamentals\Exceptions\" />
+    <Folder Include="Fundamentals\Extensibility\" />
+    <Folder Include="Fundamentals\LINQ\" />
+    <Folder Include="Fundamentals\Methods\" />
+    <Folder Include="Fundamentals\Testability\" />
+    <Folder Include="Fundamentals\ReflectionAndAttributes\" />
+    <Folder Include="Fundamentals\PreprocessorDirectives\" />
+    <Folder Include="Fundamentals\ValueTypesandReferenceTypes\" />
+    <Folder Include="Fundamentals\SystemObject\" />
+    <Folder Include="Fundamentals\Structs\" />
+    <Folder Include="ModernCSharp\" />
+    <Folder Include="CSharp6\" />
   </ItemGroup>
 
 </Project>
