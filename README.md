@@ -1,4 +1,11 @@
 # C# 
+## Table of Contents
+
+- [Introduction](#Basics)
+- [Variables](#Variables)
+- [Loops](#Loops)
+
+
 
 ## Basics
 
@@ -86,7 +93,7 @@ public class MyClass
 }
 MyClass obj = new MyClass(); // Creates a new object of type 'MyClass'.
 ```
-**Hint:**Auto-properties (as used in the example above), tell the compiler to create a
+Hint:Auto-properties (as used in the example above), tell the compiler to create a
 backing field. We do not have to create the backing field and fill it within the Set method
 or get the value within the Get method. However, we can still implement custom logic when required
 ### Extension Methods
@@ -128,12 +135,62 @@ finally
   // Cleanup code. Executes regardless of whether an exception was thrown.
 }
 ```
-**Hint:**It’s best practice to catch an exception with a specific type (e.g. SqlException) and
+Hint:It’s best practice to catch an exception with a specific type (e.g. SqlException) and
 have a single general fallback try-catch to catch exceptions of type Exception
 
 ## Structs
+```csharp
+struct Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+
+    public Point(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Point is at ({X}, {Y})");
+    }
+}
+Point p1 = new Point(10, 20);
+p1.Display();
+```
 
 ## Interfaces
+```csharp
+interface IShape
+{
+    double GetArea();
+    void Display();
+}
+
+class Circle : IShape
+{
+    public double Radius { get; set; }
+
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+
+    public double GetArea()
+    {
+        return Math.PI * Radius * Radius;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Circle with radius: {Radius}, Area: {GetArea()}");
+    }
+}
+
+IShape circle = new Circle(5);
+circle.Display();
+```
 
 ## Arrays
 Fixed-size collections that hold elements of the same type.
@@ -151,7 +208,60 @@ str.Trim(); // Removes leading and trailing whitespace.
 str.Substring(); // Extracts a portion of the string
 ```
 ## Properties
+```csharp
+class Person
+{
+    // Private fields
+    private string name;
+    private int age;
 
+    // Public property for Name with get and set accessors
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    // Public property for Age with get and set accessors
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value >= 0)
+                age = value;
+            else
+                throw new ArgumentOutOfRangeException("Age cannot be negative");
+        }
+    }
+
+    // Auto-implemented property for City
+    public string City { get; set; }
+
+    // Constructor
+    public Person(string name, int age, string city)
+    {
+        Name = name;
+        Age = age;
+        City = city;
+    }
+
+    // Method to display person details
+    public void Display()
+    {
+        Console.WriteLine($"Name: {Name}, Age: {Age}, City: {City}");
+    }
+}
+
+// Creating an instance of the Person class
+Person person = new Person("Alice", 30, "New York");
+// Displaying initial values
+person.Display();
+// Modifying properties
+person.Name = "Bob";
+person.Age = 35;
+person.City = "Los Angeles";
+```
 ## Generic Types
 Generics allow for type-safe data structures without compromising type integrity or performance
 ```csharp
@@ -165,9 +275,100 @@ public class MyGenericClass<T> // 'T' is a placeholder for anytype.
 }
 ```
 
-## Indexers, Enumerators, and Iterators
+## Indexers, Enumerators, Iterators
+### Indexers allow instances of a class or struct to be indexed just like arrays.
+### Enumerators 
+Enumerators are used to iterate over a collection.
+###  Iterators
+Iterators simplify the implementation of custom collection classes by allowing the use of yield return
+```csharp
+class CustomCollection<T> : IEnumerable<T>
+{
+    private List<T> items = new List<T>();
 
+    // Indexer to access elements
+    public T this[int index]
+    {
+        get { return items[index]; }
+        set { items[index] = value; }
+    }
+
+    // Add method to add elements
+    public void Add(T item)
+    {
+        items.Add(item);
+    }
+
+    // Implementing GetEnumerator for IEnumerable<T>
+    public IEnumerator<T> GetEnumerator()
+    {
+        return items.GetEnumerator();
+    }
+
+    // Explicit implementation of IEnumerable.GetEnumerator
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    // Custom iterator method using yield return
+    public IEnumerable<T> Reverse()
+    {
+        for (int i = items.Count - 1; i >= 0; i--)
+        {
+            yield return items[i];
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        CustomCollection<string> collection = new CustomCollection<string>();
+
+        // Adding items to the collection
+        collection.Add("First");
+        collection.Add("Second");
+        collection.Add("Third");
+
+        // Using the indexer
+        Console.WriteLine("Item at index 1: " + collection[1]);
+
+        // Modifying an item using the indexer
+        collection[1] = "Modified Second";
+        Console.WriteLine("Modified item at index 1: " + collection[1]);
+
+        // Iterating using foreach (enumerator)
+        Console.WriteLine("Iterating over collection:");
+        foreach (var item in collection)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Using the custom iterator method
+        Console.WriteLine("Iterating over collection in reverse:");
+        foreach (var item in collection.Reverse())
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
+```
 ## Enumerations
+```csharp
+public enum DaysOfWeek
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+DaysOfWeek today = DaysOfWeek.Monday;
+```
 
 ## Attributes
 Add metadata to your code. This metadata can be inspected at runtime.
@@ -196,17 +397,6 @@ public delegate void MyDelegate();
 event MyDelegate MyEvent;
 Func<int, int, int> add = (a, b) => a + b; // Lambda expression. A concise way to define methods
 ```
-
-## Events
-
-## User-Defined Conversions
-
-## Operator Overloading
-
-
-
-
-
 ## Linq 
 Introduces native query capabilities into C#, making data manipulation simpler and more readable
 ```csharp
@@ -238,6 +428,43 @@ dict["key"] // Access the value of the dictionary at the key 'key'
 
 
 ## Threading
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Creating a new thread
+        Thread thread = new Thread(DoWork);
+
+        // Starting the thread
+        thread.Start();
+
+        // Main thread continues its work
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine("Main thread is working...");
+            Thread.Sleep(1000); // Simulate work
+        }
+
+        // Waiting for the thread to finish
+        thread.Join();
+
+        Console.WriteLine("Main thread exiting.");
+    }
+
+    static void DoWork()
+    {
+        // Simulating some work
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine("Worker thread is working...");
+            Thread.Sleep(2000); // Simulate work
+        }
+
+        Console.WriteLine("Worker thread finished.");
+    }
+}
+```
 
 ## Asynchronous and Parallel Programming
 Modern mechanism for writing non-blocking (asynchronous) code, especially useful for I/O-bound operations.
