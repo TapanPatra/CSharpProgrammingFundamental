@@ -1,4 +1,6 @@
-# C# 
+# C# Foundations
+Here is a quick run down of the lessons found in the foundations folder.
+
 ## Table of Contents
 
 - [Introduction](#Basics)
