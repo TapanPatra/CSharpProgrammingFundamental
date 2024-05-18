@@ -5,7 +5,17 @@ Here is a quick run down of the lessons found in the foundations folder.
 
 - [Introduction](#Basics)
 - [Variables](#Variables)
+- [Conditional Statements](#Conditional Statements)
 - [Loops](#Loops)
+- [Classes](#Classes)
+- [Extension Methods](#Extension Methods)
+- [Exception Handling](#Exception Handling)
+- [## Structs](#Structs)
+- [Interfaces](#Interfaces)
+- [Arrays](#Arrays)
+- [Indexers, Enumerators, Iterators](#Indexers, Enumerators, Iterators)
+- [Linq](#Linq)
+- [Collection](#Collection)
 
 
 
@@ -278,7 +288,8 @@ public class MyGenericClass<T> // 'T' is a placeholder for anytype.
 ```
 
 ## Indexers, Enumerators, Iterators
-### Indexers allow instances of a class or struct to be indexed just like arrays.
+### Indexers 
+Indexers allow instances of a class or struct to be indexed just like arrays.
 ### Enumerators 
 Enumerators are used to iterate over a collection.
 ###  Iterators
