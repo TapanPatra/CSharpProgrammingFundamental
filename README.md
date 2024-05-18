@@ -312,14 +312,39 @@ LocalFunction(); // Calling the local function
 }
 ```
 ## Records
+Records provide a concise syntax for reference types with value semantics for equality. They're immutable and are great for data structures
+```csharp
+public record Person(string Name, int Age);
+```
+
 ## Tuples
 Tuples are data structures that have a specific number and sequence of elements
 ```csharp
 var person = Tuple.Create("John", 25); // Creates a tuple with two items.
 ```
 ## with Expressions
+Used with records to create a non-destructive mutation.
+```csharp
+var john = new Person("John", 30);
+var jane = john with { Name = "Jane" }; // jane is now ("Jane",30)
+```
+##  Indexers and Ranges
+Allow for more flexible data access, especially useful with strings, arrays, and lists
+```csharp
+int[] arr = {0, 1, 2, 3, 4, 5};
+var subset = arr[1..^1]; // Grabs elements from index 1 to the second to last
+```
 ## using Declaration
+A more concise way to ensure IDisposable objects are properly disposed.
+```csharp
+using var reader = new StreamReader("file.txt"); // reader is disposed of at the end of the enclosing scope.
+```
 ## Nullable Reference Type
+A feature to help avoid null reference exceptions by being explicit about reference type nullability
+```csharp
+#nullable enable
+string? mightBeNull; // Reference type that might be null
+```
 ## Nullables
 C# allows value types to be set to null using nullable types.
 ```csharp
@@ -327,9 +352,40 @@ int? nullableInt = null; // '?' makes the int nullable.
 bool hasValue = nullableInt.HasValue; // Checks if nullable type has a value
 ```
 ## Pattern-Based Using
+Allows for more patterns in the using statement without implementing IDisposable
+```csharp
+public ref struct ResourceWrapper
+{
+  public void Dispose()
+  {
+    // Cleanup
+  }
+}
+using var resource = new ResourceWrapper();
+```
 ## Property Patterns
+Facilitates deconstruction of objects in pattern matching.
+```csharp
+if (obj is Person { Name: "John", Age: var age })
+{
+  Console.WriteLine($"John's age is {age}");
+}
+```
 ## Default Interface Implementations
+Interfaces can provide default method implementations.
+```csharp
+public interface IPerson
+{
+  void Display();
+  void Greet() => Console.WriteLine("Hello!"); // Default impleme  ntation.
+}
+```
 ## Dynamic Binding
+Makes use of the DLR (Dynamic Language Runtime) for runtime type resolution.
+```csharp
+dynamic d = 5;
+d = "Hello"; // No compile-time type checking
+```
 ## File I/O
 Interactions with the filesystem are common tasks. C# makes reading from and writing to files straightforward.
 ```csharp
