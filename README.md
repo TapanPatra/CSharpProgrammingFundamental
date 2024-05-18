@@ -199,8 +199,6 @@ Func<int, int, int> add = (a, b) => a + b; // Lambda expression. A concise way t
 
 ## Events
 
-## Dynamic Typing
-
 ## User-Defined Conversions
 
 ## Operator Overloading
