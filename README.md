@@ -112,8 +112,6 @@ public partial class MyClass
   public void MethodTwo() { /*...*/ }
 }
 ```
-
-## Anonymous Types
 ## Exception Handling
 A mechanism to handle runtime errors gracefully, ensuring the program continues or fails gracefully
 ```csharp
@@ -169,8 +167,6 @@ public class MyGenericClass<T> // 'T' is a placeholder for anytype.
 
 ## Indexers, Enumerators, and Iterators
 
-## Strings
-
 ## Enumerations
 
 ## Attributes
@@ -211,7 +207,7 @@ Func<int, int, int> add = (a, b) => a + b; // Lambda expression. A concise way t
 
 
 
-## Nullable Types
+
 
 ## Linq 
 Introduces native query capabilities into C#, making data manipulation simpler and more readable
