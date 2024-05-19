@@ -1,5 +1,10 @@
 # C# Foundations
 Here is a quick run down of the lessons found in the foundations folder.
+## Learning Resource
+  - [The Ultimate C# Mastery Series by Code with Mosh](https://codewithmosh.com/p/the-ultimate-csharp-mastery-series)
+  - [Book Illustrated C# 7](https://www.amazon.com/Illustrated-Language-Presented-Concisely-Visually/dp/1484232879)
+  - [Pluralsight Course Mastering C# 4.0 by Jon Skeet](https://app.pluralsight.com/library/courses/skeet-csharp4/)
+  - [C# Cheat Sheet](https://zerotomastery.io/cheatsheets/csharp-cheat-sheet/)
 
 ## Table of Contents
 
